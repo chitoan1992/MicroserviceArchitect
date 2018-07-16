@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using AccountingService.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
+using System.Reflection;
 
 namespace AccountingService
 {
@@ -28,6 +24,8 @@ namespace AccountingService
         {
             services.AddSwagger();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var connection = "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Accounting";
+            services.AddDbContext<AccountingContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,8 +40,7 @@ namespace AccountingService
 
             app.UseSwaggerUi(typeof(Startup).GetTypeInfo().Assembly, settings =>
 {
-
-            });
+});
         }
     }
 }
