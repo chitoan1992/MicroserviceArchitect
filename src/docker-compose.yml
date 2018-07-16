@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  inventoryservice:
+    image: ${DOCKER_REGISTRY}inventoryservice
+    build:
+      context: .
+      dockerfile: InventoryService/Dockerfile
+
+  accountingservice:
+    image: ${DOCKER_REGISTRY}accountingservice
+    build:
+      context: .
+      dockerfile: AccountingService/Dockerfile
+
+  shippingservice:
+    image: ${DOCKER_REGISTRY}shippingservice
+    build:
+      context: .
+      dockerfile: ShippingService/Dockerfile
