@@ -30,7 +30,7 @@ namespace InventoryService
         {
             services.AddSwagger();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Inventory";
+            var connection = "server=src_sql.data_1;user=sa;password=Pass@word;database=Inventory";
             services.AddDbContext<InventoryContext>(options => options.UseSqlServer(connection));
         }
 

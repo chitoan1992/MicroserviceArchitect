@@ -24,7 +24,7 @@ namespace ShippingService
         {
             services.AddSwagger();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Shipping";
+            var connection = "server=src_sql.data_1;user=sa;password=Pass@word;database=Shipping";
             services.AddDbContext<ShippingContext>(options => options.UseSqlServer(connection));
         }
 
