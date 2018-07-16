@@ -28,6 +28,10 @@ docker run -d --name kong \
     -p 8444:8444 \
     kong:latest
 
+REM docker run -it debian bash -c 'exec env PATH=/home/app:$PATH bash'
+
+docker container exec -u root kong bash -c "kong health & kong version"
+
 REM KONG DASHBOARD
 docker run --rm --network my-net -p 8080:8080 pgbi/kong-dashboard start --kong-url http://kong:8001
 
@@ -49,6 +53,14 @@ docker run -d -p 1337:1337 \
              -e "DB_DATABASE=kongadb" \
              -e "NODE_ENV=development" \
              pantsel/konga
+
+
+REM cd ../InventoryService
+REM dotnet ef dbcontext scaffold "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Inventory" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
+REM cd ../ShippingService
+REM dotnet ef dbcontext scaffold "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Shipping" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
+REM cd ../AccountingService
+REM dotnet ef dbcontext scaffold "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Accounting" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
 
 cd src
 docker-compose -f docker-compose.yml -f docker-compose.override.yml build
