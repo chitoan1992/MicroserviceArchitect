@@ -55,6 +55,7 @@ docker run -d -p 1337:1337 \
              pantsel/konga
 
 
+
 REM cd ../InventoryService
 REM dotnet ef dbcontext scaffold "server=192.168.99.100,5433;user=sa;password=Pass@word;database=Inventory" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
 REM cd ../ShippingService
@@ -64,6 +65,16 @@ REM dotnet ef dbcontext scaffold "server=192.168.99.100,5433;user=sa;password=Pa
 
 cd src
 docker-compose -f docker-compose.yml -f docker-compose.override.yml build
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+docker-compose -d -f docker-compose.yml -f docker-compose.override.yml up
+
+REM UPDATE DATABASE
+REM dotnet ef database update -c ApplicationDbContext
+
+docker-compose -f IdentityServer/docker-compose.yml up -d --build
+REM docker-compose -f IdentityServer/docker-compose.yml down
 
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar -e SONARQUBE_JDBC_URL=jdbc:postgresql://localhost/sonar sonarqube
+
+docker run --name mysql -d --net keycloak-network -e MYSQL_DATABASE=keycloak -e MYSQL_USER=keycloak -e MYSQL_PASSWORD=password -e MYSQL_ROOT_PASSWORD=root_password mysql
+
+docker run --name keycloaktest --net keycloak-network jboss/keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak

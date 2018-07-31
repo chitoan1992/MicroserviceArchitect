@@ -1,0 +1,10 @@
+{
+    "realm": "sample",
+    "auth-server-url": "http://192.168.1.13:8080/auth",
+    "ssl-required": "external",
+    "resource": "sample-api",
+    "credentials": {
+      "secret": "3caddc71-ee0a-4bb3-a776-6507a5e8292a"
+    },
+    "confidential-port": 0
+  }

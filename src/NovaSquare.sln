@@ -7,11 +7,11 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{64FD2C59-F519-431B-8DDB-627577107574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService", "InventoryService\InventoryService.csproj", "{A362A525-440C-44C3-9F47-CE615B55D033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService", "InventoryService\InventoryService.csproj", "{A362A525-440C-44C3-9F47-CE615B55D033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingService", "AccountingService\AccountingService.csproj", "{809B2DC3-BD68-4F7E-BC12-FB57B37C92DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountingService", "AccountingService\AccountingService.csproj", "{809B2DC3-BD68-4F7E-BC12-FB57B37C92DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingService", "ShippingService\ShippingService.csproj", "{7868EEE5-42F0-4F2D-8AA9-BFE7157F6202}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingService", "ShippingService\ShippingService.csproj", "{7868EEE5-42F0-4F2D-8AA9-BFE7157F6202}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
